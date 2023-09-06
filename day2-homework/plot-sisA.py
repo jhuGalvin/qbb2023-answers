@@ -32,6 +32,9 @@ for i in range(len(samples)):
     else:
         mExpr.append(expr[i])
 
+for i in range(len(mExpr)):
+    mExpr[i] = 2*mExpr[i]
+
 devStages = ['10', '11', '12', '13', '14A', '14B', '14C', '14D']
 
 # Plot data
