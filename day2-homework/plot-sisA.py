@@ -20,31 +20,19 @@ for i in range(len(transcripts)):
     if transcripts[i] == 'FBtr0073461':
         row = i
 
-# Find columns with female samples
-fCols = []
+# Iterate through
+expr = []
+fExpr = []
+mExpr = []
+
 for i in range(len(samples)):
+    expr.append(data[row,i])
     if "female" in samples[i]:
-        fCols.append(i)
+        fExpr.append(expr[i])
+    else:
+        mExpr.append(expr[i])
 
-# Subset female data
-fExpression = data[row, fCols]
-
-# Prepare data
-fX = samples[fCols]
-fY = fExpression
-
-# Find columns with male samples
-mCols = []
-for i in range(len(samples)):
-    if "female" in samples[i]:
-        mCols.append(i)
-
-# Subset male data
-mExpression = data[row, mCols]
-
-# Prepare data
-mX = samples[mCols]
-mY = mExpression
+devStages = ['10', '11', '12', '13', '14A', '14B', '14C', '14D']
 
 # Plot data
 fig, ax = plt.subplots()
@@ -52,11 +40,10 @@ ax.set_title( "SisA (FBtr0073461)" )
 ax.set_ylabel("mRNA abundance (RPKM)")
 ax.set_xlabel("developmental stage")
 
-ax.plot(fX,fY)
-ax.plot(mX,mY)
+ax.plot(devStages, fExpr)
+ax.plot(devStages, mExpr)
 
 plt.xticks(rotation = 90)
-#ax.set_xticklabels(ax.get_xticklabels(), rotation = 90, ha = 'right')
 plt.tight_layout()
 fig.savefig( "FBtr0073461.png" )
 plt.close( fig )
