@@ -20,25 +20,41 @@ for i in range(len(transcripts)):
     if transcripts[i] == 'FBtr0073461':
         row = i
 
-# Find columns with samples of interest (female)
-cols = []
+# Find columns with female samples
+fCols = []
 for i in range(len(samples)):
     if "female" in samples[i]:
-        cols.append(i)
+        fCols.append(i)
 
-# Subset data of interest
-expression = data[row, cols]
+# Subset female data
+fExpression = data[row, fCols]
 
 # Prepare data
-x = samples[cols]
-y = expression
+fX = samples[fCols]
+fY = fExpression
+
+# Find columns with male samples
+mCols = []
+for i in range(len(samples)):
+    if "female" in samples[i]:
+        mCols.append(i)
+
+# Subset male data
+mExpression = data[row, mCols]
+
+# Prepare data
+mX = samples[mCols]
+mY = mExpression
 
 # Plot data
 fig, ax = plt.subplots()
 ax.set_title( "SisA (FBtr0073461)" )
 ax.set_ylabel("mRNA abundance (RPKM)")
 ax.set_xlabel("developmental stage")
-ax.plot( x, y )
+
+ax.plot(fX,fY)
+ax.plot(mX,mY)
+
 plt.xticks(rotation = 90)
 #ax.set_xticklabels(ax.get_xticklabels(), rotation = 90, ha = 'right')
 plt.tight_layout()
