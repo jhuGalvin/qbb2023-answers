@@ -1,13 +1,16 @@
 #!/usr/bin/env python
+import sys
 
+fs = open(sys.argv[1])
+lines = fs.readlines()
 
-testSet = [1, 2, 6, 4, 5]
-
-def findAvg(numSet):
+def findAvg(lines):
 	nSum = 0
-	for i in numSet:
-		nSum += i
 
-	return nSum/len(numSet)
+	for line in lines:
+		num = int(line)
+		nSum += num
 
-print(findAvg(testSet))
+	return nSum/len(lines)
+
+print(findAvg(lines))
