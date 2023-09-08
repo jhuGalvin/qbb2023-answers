@@ -1,0 +1,5 @@
+The Wright-Fisher model assumes no selection is exerted on alleles in the population. Selection would change the way allele frequencies change over time, but the effect of selection would depend on population size, even if selection were strong. In small populations, drift would likely be the predominant force in most cases.
+
+In the Wright-Fisher model, the starting frequency of an allele generally determines the number of generations necessary for that allele to reach fixation. This is illustrated in the graph titled "Time to Fixation at Different Allele Frequencies," in which a parabola is visible which shows that alleles with a frequency of 0.5 take longer to reach fixation than alleles starting at frequencies closer to 0 or 1. 
+
+Random mating does not occur in the Wright-Fisher model, which allows allele frequencies to drift randomly until they reach fixation. Non-random mating would cause some alleles to change in frequency non-randomly, with factors such as assortative mating and sexual coevolution causing some alleles to reach fixation more quickly than they otherwise would.
