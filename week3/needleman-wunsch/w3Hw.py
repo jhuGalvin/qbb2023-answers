@@ -13,10 +13,6 @@ align_file = sys.argv[4]
 seq1_id, sequence1 = input_sequences[0]
 seq2_id, sequence2 = input_sequences[1]
 
-# nt gap penalty = -300, aa gap penalty = -10
-
-# ./w3Hw.py CTCF_38_M27_AA.faa BLOSUM62.txt -10
-
 scoring_matrix = pd.DataFrame(pd.read_csv(scoring_matrix_file, sep = '\s+'))
 print(scoring_matrix)
 
@@ -70,8 +66,8 @@ while i != 0 or j != 0:
 		seq2Al = sequence2[j - 1] + seq2Al
 		j -= 1
 
-	else:
-		seq1Al = sequence1[i] + seq1Al
+	if traceback_matrix[i, j] == 'v':
+		seq1Al = sequence1[i-1] + seq1Al
 		seq2Al = '-' + seq2Al
 		i -= 1
 
@@ -88,8 +84,8 @@ file.writelines(lines)
 file.close()
 
 # for protein alignment
-# ./w3Hw.py CTCF_38_M27_AA.faa BLOSUM62.txt -300 alignmentAA.txt
+# ./w3Hw.py CTCF_38_M27_AA.faa BLOSUM62.txt -10 alignmentAA.txt
 
 # for nucleotide
-# ./w3Hw.py CTCF_38_M27_DNA.fna HOXD70.txt -10 alignmentNT.txt
+# ./w3Hw.py CTCF_38_M27_DNA.fna HOXD70.txt -300 alignmentNT.txt
 
