@@ -72,8 +72,8 @@ adata.uns['log1p']['base'] = None # This is needed due to a bug in scanpy
 sc.tl.rank_genes_groups(adata, 'leiden')
 
 # 3.2
-top_marker_genes = ['Unknown','Monocytes','B Cells','CD8+ T Cells','Leukocytes','NK Cells','APCs','HSCs']
-adata.rename_categories('leiden', top_marker_genes)
+marker_genes = ['LDHB','S100A8','CD79A','CCL5','FCGR3A','GNLY','FCER1A','PF4']
+adata.rename_categories('leiden', marker_genes)
 
 sc.pl.umap(adata, color = 'leiden', legend_loc = 'on data', show = False)
 
@@ -82,9 +82,9 @@ plt.subplots_adjust(top = 0.9)
 
 plt.savefig('top_gene_labelled_umap.png', dpi = 300)
 
-#3.3
-marker_genes = ['LDHB','S100A8','CD79A','CCL5','FCGR3A','GNLY','FCER1A','PF4']
-adata.rename_categories('leiden', marker_genes)
+# 3.3
+top_marker_genes = ['Unknown','Monocytes','B Cells','CD8+ T Cells','Leukocytes','NK Cells','APCs','HSCs']
+adata.rename_categories('leiden', top_marker_genes)
 
 sc.pl.umap(adata, color = 'leiden', legend_loc = 'on data', show = False)
 
